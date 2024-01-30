@@ -1,2 +1,112 @@
 # R-EuStockMarket-analysis
 Basic analysis of EuStockMarket on R Markdown
+---
+title: "Assignment_1STA"
+author: "Calvin Gacheru"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Generating the EUStockMarkets data set:
+
+*loading the data set to R:*
+
+```{r echo = FALSE}
+datasets::EuStockMarkets
+View(EuStockMarkets)  # for viewing the data set in a different tab.
+
+```
+
+### Main focus of EuStockMarkets data set:
+
+The European Stock Markets data set focuses on the daily closing of major European stock indices: Germany DAX (Ibis), Switzerland SMI, France CAC, and UK FTSE. The data set shows a financial market theme for data collected on a daily basis from 1991-1998 excluding weekends and holidays.
+
+### Intended use of the EuStockMarkets data set:
+
+The EuStockMarkets is used to provide statistical analysis in the European Stock Market, compare different stocks from the four European Countries and develop predictive analysis for the stocks.
+
+### Structure and organization of EuStockMarkets data set:
+
+The data set provides a multivariate time series with 1860 observation on 4 variables. The four variables represent: Germany DAX (Ibis) Switzerland SMI France CAC UK FTSE.
+
+*generating a summary for all numerical variables: using the summary function.*
+
+```{r}
+summary(EuStockMarkets) 
+```
+
+*The summary function provides a minimum, 1st and 3rd quartile, mean, median and maximum of DAX, SMI, CAC and FTSE. To summarize individual variables i.e Germany DAX:*
+
+```{r}
+summary(EuStockMarkets[, c('DAX')])
+summary(EuStockMarkets[, c('SMI')])
+summary(EuStockMarkets[, c('CAC')])
+summary(EuStockMarkets[, c('FTSE')])
+
+```
+
+*using describe function:*
+
+```{r}
+library(psych)   #loading the psych package to enable describe function
+describe(EuStockMarkets)
+```
+
+*Calculating mean of the four stocks:*
+
+```{r}
+mean(EuStockMarkets[,'DAX'])
+mean(EuStockMarkets[,'SMI'])
+mean(EuStockMarkets[,'CAC'])
+mean(EuStockMarkets[,'FTSE'])
+```
+
+The mean are as follows DAX = 2530.657
+
+SMI = 3376.224
+
+CAC = 2227.828
+
+FTSE = 3565.643
+
+The mean provides an average daily closing from 1991-1998. It can also used in predictive modeling and other statistical analysis.
+
+*Calculating median of the four stocks:*
+
+```{r}
+median(EuStockMarkets[,'DAX'])
+median(EuStockMarkets[,'SMI'])
+median(EuStockMarkets[,'CAC'])
+median(EuStockMarkets[,'FTSE'])
+
+```
+
+The median are as follows: DAX = 2140.565
+
+SMI = 2796.35
+
+CAC = 1992.3
+
+FTSE = 3246.6
+
+The median on the other hand represents the middle daily closing index from 1991-1998. Its significance is noted in its robustness since it is not affected by extreme values hence can provide a more accurate value in the data set.
+
+*visualizing the EuStockMarkets with a line plot:*
+
+```{r}
+library(ggfortify)
+library(ggplot2)
+autoplot(EuStockMarkets) #automatically plot the EuStockMarkets
+```
+
+### Noticeable patterns and trends for the stock index
+
+From the visualization above, we can take note the following trends:
+
+1)  When one index increases, the other indexes tend to also increase, for example, when the stock index of Germany DAX increases, the three other stocks indexes also increase.
+
+2)  The stock index of all four DAX, SMI, CAC and FTSE fluctuates from 1991-1998. It does not rise nor fall steadily, rather it rises then falls, then rises.
+
+### Distribution of the data and insights that can be drawn from it.
+
+The distribution of the EustockMarkets can provide insights such as measuring the mean and the median to get the average daily closing of each stock index since 1991-1998, excluding weekends and holidays.
